@@ -6,14 +6,12 @@ body {
 }
 
 /* HEADER STYLING */
-/* === Header Gradient (Updated Colors) === */
 header {
-    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* warm peach-orange */
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
     color: #fff;
     padding: 1.5rem 1rem;
 }
 
-/* === Header Content Layout === */
 .header-content {
     display: flex;
     align-items: center;
@@ -21,9 +19,9 @@ header {
     max-width: 1200px;
     margin: 0 auto;
     flex-wrap: wrap;
+    position: relative;
 }
 
-/* === Profile + Title === */
 .profile-pic {
     width: 60px;
     height: 60px;
@@ -48,7 +46,6 @@ header {
     font-size: 1rem;
 }
 
-/* === Navbar === */
 .navbar {
     position: relative;
 }
@@ -72,7 +69,7 @@ header {
     color: #000;
 }
 
-/* === Hamburger Menu (Mobile) === */
+/* Hamburger Menu */
 .menu-icon {
     display: none;
     font-size: 1.8rem;
@@ -87,25 +84,34 @@ header {
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: rgba(0, 0, 0, 0.3);
-        padding: 1rem;
-        width: 100%;
-        margin-top: 1rem;
-    }
-
-    #menu-toggle:checked + .menu-icon + .nav-links {
-        display: flex;
+        align-items: stretch;
     }
 
     .menu-icon {
         display: block;
+        position: absolute;
+        top: 4rem;
+        right: 4rem;
+        z-index: 2;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.05);
         margin-top: 1rem;
+        padding: 1rem;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
+
+    #menu-toggle:checked ~ .navbar .nav-links {
+        max-height: 300px;
+    }
+
+    .nav-links li a {
+        padding: 0.5rem 0;
     }
 }
 
